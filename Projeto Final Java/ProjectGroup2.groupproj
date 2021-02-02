@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{E2C55CAA-867D-42DA-90B0-A7AA4CBEF40B}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Project1.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\Documents\Arquivos\Estudo\ETECVAV\TCC\Lista - Cópia\Lista.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Project1">
+        <MSBuild Projects="Project1.dproj"/>
+    </Target>
+    <Target Name="Project1:Clean">
+        <MSBuild Projects="Project1.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Project1:Make">
+        <MSBuild Projects="Project1.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Lista">
+        <MSBuild Projects="..\..\Documents\Arquivos\Estudo\ETECVAV\TCC\Lista - Cópia\Lista.dproj"/>
+    </Target>
+    <Target Name="Lista:Clean">
+        <MSBuild Projects="..\..\Documents\Arquivos\Estudo\ETECVAV\TCC\Lista - Cópia\Lista.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Lista:Make">
+        <MSBuild Projects="..\..\Documents\Arquivos\Estudo\ETECVAV\TCC\Lista - Cópia\Lista.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Project1;Lista"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Project1:Clean;Lista:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Project1:Make;Lista:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
